@@ -1,0 +1,45 @@
+{
+	"name": "breakpoint-webhooks",
+	"displayName": "Breakpoint Webhooks",
+	"description": "Attempts to fetch a webhook URL on breakpoint hits, if configured",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.80.0"
+	},
+	"categories": [
+		"Debuggers",
+		"Other"
+	],
+	"activationEvents": [
+		"onDebug"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "breakpointWebhook.enable",
+				"title": "Enable Breakpoint Webhooks"
+			}
+		],
+		"configuration": {
+			"title": "Breakpoint Webhooks",
+			"properties": {
+				"breakpointWebhook.webhookUrl": {
+					"type": "string",
+					"default": "",
+					"description": "Webhook URL to send breakpoint notifications"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.80.0",
+		"@types/node": "^16.11.7",
+		"typescript": "^5.1.3"
+	}
+}
