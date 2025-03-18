@@ -1,5 +1,14 @@
 import * as vscode from "vscode";
 
+function verboseLog(outputChannel: vscode.OutputChannel, log: string) {
+	const config = vscode.workspace.getConfiguration("breakpointWebhook");
+	const verbose = config.get<string>("verbose");
+	if (verbose) {
+		outputChannel.appendLine(`debuggerWebhook: ${log}`);
+		outputChannel.show();
+	}
+}
+
 export function activate(context: vscode.ExtensionContext) {
 	// Create output channel
 	const outputChannel = vscode.window.createOutputChannel(
@@ -18,15 +27,39 @@ export function activate(context: vscode.ExtensionContext) {
 		return;
 	}
 
-	outputChannel.show();
-	outputChannel.appendLine(
-		"Breakpoint Webhooks is now active.  Will ping ${webhookUrl} on breakpoint hits.",
+	verboseLog(
+		outputChannel,
+		`Breakpoint Webhooks is now active. Will GET ${webhookUrl} on breakpoint hits.`,
 	);
 
 	// Start listening for debug events immediately
-	const debugListener = vscode.debug.onDidChangeActiveStackItem((e) => {
-		outputChannel.show();
-		outputChannel.appendLine(`onDidChangeActiveStackItem! ${e?.threadId}`);
+	const debugListener = vscode.debug.onDidChangeActiveStackItem(async (e) => {
+		// return early if no active stack item
+		if (!e) {
+			return;
+		}
+
+		// Prepare the event data
+		const eventData = {
+			event: "breakpointHit",
+			threadId: e?.threadId,
+			timestamp: new Date().toISOString(),
+		};
+
+		// Encode the data for GET request
+		const queryParams = encodeURIComponent(JSON.stringify(eventData));
+		const requestUrl = `${webhookUrl}?data=${queryParams}`;
+
+		try {
+			outputChannel.appendLine(`GET: ${requestUrl}`);
+			outputChannel.show();
+
+			// Send the GET request using fetch
+			const response = await fetch(requestUrl);
+			verboseLog(outputChannel, `Webhook response status: ${response.status}`);
+		} catch (error: any) {
+			verboseLog(outputChannel, `Webhook error: ${error.message}`);
+		}
 	});
 
 	// Add the listener to subscriptions so it gets cleaned up on deactivation

@@ -28,6 +28,11 @@
 					"type": "string",
 					"default": "",
 					"description": "Webhook URL to send breakpoint notifications"
+				},
+				"breakpointWebhook.verbose": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable verbose logging"
 				}
 			}
 		}
@@ -38,8 +43,11 @@
 		"watch": "tsc -watch -p ./"
 	},
 	"devDependencies": {
-		"@types/vscode": "^1.80.0",
 		"@types/node": "^16.11.7",
+		"@types/vscode": "^1.80.0",
 		"typescript": "^5.1.3"
+	},
+	"dependencies": {
+		"node-fetch": "^3.3.2"
 	}
 }
