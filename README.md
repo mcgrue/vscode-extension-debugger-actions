@@ -14,7 +14,7 @@ Send HTTP requests whenever a breakpoint is hit during debugging. Useful for tri
 
 Watch a quick demo of the Breakpoint Webhooks extension in action:
 
-[![Breakpoint Webhooks Demo](https://img.youtube.com/vi/sT03Hrv72
+[![Breakpoint Webhooks Demo](https://img.youtube.com/vi/sT03Hrv72Mg/0.jpg)](https://youtu.be/sT03Hrv72Mg)
 
 ## Requirements
 

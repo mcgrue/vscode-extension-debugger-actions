@@ -53,9 +53,24 @@ export function activate(context: vscode.ExtensionContext) {
 		try {
 			verboseLog(outputChannel, `GET: ${requestUrl}`);
 
-			// Send the GET request using fetch
-			const response = await fetch(requestUrl);
-			verboseLog(outputChannel, `Webhook response status: ${response.status}`);
+			// Send the GET request using fetch with a timeout
+			const controller = new AbortController();
+			const timeout = setTimeout(() => {
+				controller.abort();
+			}, 5000); // 5 second timeout
+
+			try {
+				const response = await fetch(requestUrl, {
+					signal: controller.signal,
+				});
+				clearTimeout(timeout);
+				verboseLog(
+					outputChannel,
+					`Webhook response status: ${response.status}`,
+				);
+			} finally {
+				clearTimeout(timeout);
+			}
 		} catch (error: any) {
 			verboseLog(outputChannel, `Webhook error: ${error.message}`);
 		}
