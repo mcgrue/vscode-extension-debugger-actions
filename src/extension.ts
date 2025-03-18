@@ -51,8 +51,7 @@ export function activate(context: vscode.ExtensionContext) {
 		const requestUrl = `${webhookUrl}?data=${queryParams}`;
 
 		try {
-			outputChannel.appendLine(`GET: ${requestUrl}`);
-			outputChannel.show();
+			verboseLog(outputChannel, `GET: ${requestUrl}`);
 
 			// Send the GET request using fetch
 			const response = await fetch(requestUrl);

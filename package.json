@@ -1,12 +1,23 @@
 {
 	"name": "breakpoint-webhooks",
 	"displayName": "Breakpoint Webhooks",
-	"description": "Attempts to fetch a webhook URL on breakpoint hits, if configured",
-	"version": "0.0.1",
+	"description": "Attempts to fetch a webhook URL upon breakpoint hits, if configured in your settings.json",
+	"version": "0.0.2",
+	"publisher": "EgometryApps",
+	"icon": "images/icon.png",
+	"galleryBanner": {
+		"color": "#007acc",
+		"theme": "dark"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/mcgrue/vscode-extension-debugger-actions"
+	},
 	"engines": {
 		"vscode": "^1.80.0"
 	},
 	"categories": [
+		"Testing",
 		"Debuggers",
 		"Other"
 	],

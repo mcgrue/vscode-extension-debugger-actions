@@ -1,6 +1,6 @@
 # Breakpoint Webhooks
 
-Send HTTP requests whenever a breakpoint is hit during debugging. Useful for triggering external actions or notifications when specific code paths are executed.
+Send HTTP requests whenever a breakpoint is hit during debugging. Useful for triggering external actions or notifications.
 
 ## Features
 
@@ -10,7 +10,11 @@ Send HTTP requests whenever a breakpoint is hit during debugging. Useful for tri
 - Real-time logging of webhook activity
 - Zero configuration needed beyond webhook URL
 
-![Feature Preview](images/feature-preview.gif)
+## Demo Video
+
+Watch a quick demo of the Breakpoint Webhooks extension in action:
+
+[![Breakpoint Webhooks Demo](https://img.youtube.com/vi/sT03Hrv72
 
 ## Requirements
 
@@ -21,7 +25,8 @@ Send HTTP requests whenever a breakpoint is hit during debugging. Useful for tri
 
 This extension contributes the following setting:
 
-* `breakpointWebhook.webhookUrl`: Webhook URL to send breakpoint notifications
+* `breakpointWebhook.webhookUrl`: Webhook URL to send breakpoint notifications.  Use wisely
+* `breakpointWebhook.verbose`: Enable verbose logging for debugging (goes to the output window in the "Breakpoint Webhooks" channel)
 
 ## Setup
 
@@ -54,10 +59,8 @@ The extension will automatically begin sending requests to your webhook URL when
 
 ## Common Use Cases
 
-- Trigger CI/CD pipelines when specific code paths are executed
-- Send Slack/Discord notifications on critical breakpoints
-- Log debugging sessions to external monitoring systems
-- Automate actions based on code execution patterns
+- Trigger sounds or notifications when breakpoints are hit (useful for long running processes that you don't know when you'll hit the breakpoint and  you're getting distracted by reddit...)
+- Look, I just missed the old MSVC++ system-level configurable debugger sounds
 
 ## Known Issues
 
@@ -66,7 +69,7 @@ The extension will automatically begin sending requests to your webhook URL when
 
 ## Release Notes
 
-### 0.0.1
+### 0.0.2
 
 Initial release of Breakpoint Webhooks:
 - Basic webhook functionality
@@ -75,7 +78,7 @@ Initial release of Breakpoint Webhooks:
 
 ## Contributing
 
-Found a bug or have a feature request? Please open an issue on our [GitHub repository](https://github.com/yourusername/vscode-extension-debugger-actions).
+Found a bug or have a feature request? Please open an issue on our [GitHub repository](https://github.com/mcgrue/vscode-extension-debugger-actions/issues).
 
 ## License
 
