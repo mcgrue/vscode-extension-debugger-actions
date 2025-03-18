@@ -2,7 +2,7 @@
 	"name": "breakpoint-webhooks",
 	"displayName": "Breakpoint Webhooks",
 	"description": "Attempts to fetch a webhook URL upon breakpoint hits, if configured in your settings.json",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"publisher": "EgometryApps",
 	"icon": "images/icon.png",
 	"galleryBanner": {

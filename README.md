@@ -69,7 +69,7 @@ The extension will automatically begin sending requests to your webhook URL when
 
 ## Release Notes
 
-### 0.0.2
+### 0.0.3
 
 Initial release of Breakpoint Webhooks:
 - Basic webhook functionality
